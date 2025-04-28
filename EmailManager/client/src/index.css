@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+  
+  /* Extra colors for the email client */
+  --chart-1: 207 90% 54%;
+  --chart-2: 79 87% 58%;
+  --chart-3: 0 84% 60%;
+  --chart-4: 260 90% 65%;
+  --chart-5: 340 82% 56%;
+  
+  /* Status colors */
+  --status-info: 207 90% 54%;
+  --status-warning: 45 93% 47%;
+  --status-success: 120 100% 33%;
+  --status-error: 0 84% 60%;
+  
+  /* Sidebar specific variables */
+  --sidebar-background: 240 10% 3.9%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-primary: 207 90% 54%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 240 3.7% 15.9%;
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-border: 240 3.7% 15.9%;
+  --sidebar-ring: 240 4.9% 83.9%;
+}
+
+.light {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+  
+  /* Extra colors for the email client */
+  --chart-1: 207 90% 54%;
+  --chart-2: 79 87% 58%;
+  --chart-3: 0 84% 60%;
+  --chart-4: 260 90% 65%;
+  --chart-5: 340 82% 56%;
+  
+  /* Status colors */
+  --status-info: 207 90% 54%;
+  --status-warning: 45 93% 47%;
+  --status-success: 120 100% 33%;
+  --status-error: 0 84% 60%;
+  
+  /* Sidebar specific variables */
+  --sidebar-background: 0 0% 100%;
+  --sidebar-foreground: 20 14.3% 4.1%;
+  --sidebar-primary: 207 90% 54%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 60 4.8% 95.9%;
+  --sidebar-accent-foreground: 24 9.8% 10%;
+  --sidebar-border: 20 5.9% 90%;
+  --sidebar-ring: 20 14.3% 4.1%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Custom scrollbar styles */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  @apply bg-muted rounded;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+/* Transition effects */
+.sidebar-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Apply scrollbar to all overflow elements */
+[class*="overflow-y-auto"],
+[class*="overflow-x-auto"],
+[class*="overflow-auto"] {
+  @apply scrollbar-thin;
+}
+
+/* Prose dark mode override */
+.prose {
+  @apply prose-invert;
+}
+
+.prose a {
+  @apply text-primary no-underline hover:underline;
+}
+
+.email-item {
+  transition: background-color 0.15s ease-in-out;
+}
+
+.email-item:hover {
+  @apply bg-primary/10;
+}
+
+/* Overrides for better dark mode experience */
+input {
+  @apply border-muted;
+  background-color: hsl(var(--muted));
+}
+
+/* For contenteditable elements used for email composition */
+[contenteditable] {
+  @apply outline-none;
+}
+[contenteditable]:empty:before {
+  content: attr(placeholder);
+  @apply text-muted-foreground;
+}
